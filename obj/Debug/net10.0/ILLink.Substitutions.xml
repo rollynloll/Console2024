@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="Console2048">
+    <resource name="FSharpSignatureData.Console2048" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.Console2048" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.Console2048" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.Console2048" action="remove"></resource>
+    <resource name="FSharpOptimizationData.Console2048" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.Console2048" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.Console2048" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.Console2048" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.Console2048" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.Console2048" action="remove"></resource>
+  </assembly>
+</linker>

@@ -71,10 +71,12 @@ type Board(size: int) =
         if hasEmpty () then false
         else
             [Up; Down; Left; Right] |> List.forall (fun dir ->
-                let before = Array2D.copy tiles
-                ignore (moveBoard dir (Array2D.copy tiles))
-                array2DEqual (Array2D.copy tiles) before
+                let copy = Array2D.copy tiles
+                ignore (moveBoard dir copy)
+                array2DEqual copy tiles
             )
+                
+                
 
     member _.move (direction: Direction) =
         let before = Array2D.copy tiles

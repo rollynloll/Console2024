@@ -6,9 +6,10 @@ type Game(difficulty: IDifficulty) =
     let mutable score = 0
     let targetTile = difficulty.targetTile
 
-    let checkResult () =
+    let checkResult (gain: int) =
         if board.isWin targetTile then Win
         elif board.isLose then Lose
+        elif gain = -1 then Error
         else Playing
 
     let rng = System.Random()
@@ -21,10 +22,8 @@ type Game(difficulty: IDifficulty) =
 
     member _.ApplyMove (dir: Direction) =
         let gain = board.move dir
-        if gain = -1 then Error 
-        else 
-            score <- score + gain
-            checkResult ()
+        if gain = -1 then () else score <- score + gain
+        checkResult gain
 
     member _.show () =
         Renderer.renderBoard board score

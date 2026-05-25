@@ -11,7 +11,7 @@ let renderBoard (board: Board) (score: int) =
     let maxTile = tiles |> Seq.cast<int> |> Seq.reduce max
     let sep = "+" + String.replicate size "------+"
 
-    printfn "  Score: %-10d  Best Tile: %d" score maxTile
+    printfn "  Score: %-5d  Best Tile: %-5d  " score maxTile 
     printfn ""
     for r in 0..size-1 do
         printfn "%s" sep
@@ -25,11 +25,27 @@ let renderBoard (board: Board) (score: int) =
     printfn "  W/↑  S/↓  A/←  D/→"
 
 let renderWin (score: int) =
-    clear ()
     printfn "  *** YOU WIN! ***"
     printfn "  Final Score: %d" score
 
 let renderLose (score: int) =
-    clear ()
     printfn "  *** GAME OVER ***"
     printfn "  Final Score: %d" score
+
+let renderStart: IDifficulty =
+    let rec loop () =
+        clear ()
+        printfn "  === 2048 ==="
+        printfn ""
+        printfn "  Select Difficulty:"
+        printfn "  1. Easy   (target: 256)"
+        printfn "  2. Medium (target: 1024)"
+        printfn "  3. Hard   (target: 2048)"
+        printfn ""
+        printf "  Enter 1, 2, or 3: "
+        match System.Console.ReadLine() with
+        | "1" -> selectDifficulty Easy
+        | "2" -> selectDifficulty Medium
+        | "3" -> selectDifficulty Hard
+        | _   -> loop ()
+    loop ()

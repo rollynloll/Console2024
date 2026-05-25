@@ -22,10 +22,11 @@ and moveLoop (game: Game) =
         moveLoop game
     | Some dir ->
         match game.ApplyMove dir with
-        | Win     -> Renderer.renderWin game.Score
+        | Win     -> Renderer.renderWin game.Score 
         | Lose    -> Renderer.renderLose game.Score
         | Playing -> gameLoop game
         | Error   -> moveLoop game
 
-let game = Game(HardDifficulty() :> IDifficulty)
+let game = Game(Renderer.renderStart)
+game.SpawnTile
 gameLoop game
